@@ -24,6 +24,7 @@ android {
     compileSdkVersion rootProject.compileSdkVersion
     buildFeatures {
         dataBinding true
+        compose true
     }
     defaultConfig {
         applicationId "com.google.samples.apps.sunflower"
@@ -56,6 +57,7 @@ android {
     kotlinOptions {
         // work-runtime-ktx 2.1.0 and above now requires Java 8
         jvmTarget = "1.8"
+        useIR = true
 
         // Enable Coroutines and Flow APIs
         freeCompilerArgs += "-Xopt-in=kotlinx.coroutines.ExperimentalCoroutinesApi"
@@ -66,6 +68,10 @@ android {
         // our test APK to build (has no effect on our AARs)
         excludes += "/META-INF/AL2.0"
         excludes += "/META-INF/LGPL2.1"
+    }
+    composeOptions {
+        kotlinCompilerVersion "1.5.21"
+        kotlinCompilerExtensionVersion "1.0.0-rc02"
     }
 }
 
@@ -97,6 +103,16 @@ dependencies {
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$rootProject.coroutinesVersion"
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$rootProject.coroutinesVersion"
     implementation "com.google.dagger:hilt-android:$rootProject.hiltVersion"
+
+    // Compose
+    implementation "androidx.compose.runtime:runtime:$rootProject.composeVersion"
+    implementation "androidx.compose.ui:ui:$rootProject.composeVersion"
+    implementation "androidx.compose.foundation:foundation:$rootProject.composeVersion"
+    implementation "androidx.compose.foundation:foundation-layout:$rootProject.composeVersion"
+    implementation "androidx.compose.material:material:$rootProject.composeVersion"
+    implementation "androidx.compose.runtime:runtime-livedata:$rootProject.composeVersion"
+    implementation "androidx.compose.ui:ui-tooling:$rootProject.composeVersion"
+    implementation "com.google.android.material:compose-theme-adapter:$rootProject.composeVersion"
 
     // Testing dependencies
     kaptAndroidTest "com.google.dagger:hilt-android-compiler:$rootProject.hiltVersion"

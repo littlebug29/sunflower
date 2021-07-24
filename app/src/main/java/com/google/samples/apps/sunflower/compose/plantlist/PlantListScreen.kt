@@ -1,4 +1,4 @@
-package com.google.samples.apps.sunflower.compose
+package com.google.samples.apps.sunflower.compose.plantlist
 
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.layout.fillMaxHeight

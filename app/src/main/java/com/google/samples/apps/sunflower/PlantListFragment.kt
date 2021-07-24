@@ -32,8 +32,7 @@ import androidx.navigation.findNavController
 import com.google.accompanist.insets.ProvideWindowInsets
 import com.google.android.material.composethemeadapter.MdcTheme
 import com.google.samples.apps.sunflower.adapters.PlantAdapter
-import com.google.samples.apps.sunflower.compose.PlantListScreen
-import com.google.samples.apps.sunflower.databinding.FragmentPlantListBinding
+import com.google.samples.apps.sunflower.compose.plantlist.PlantListScreen
 import com.google.samples.apps.sunflower.viewmodels.PlantListViewModel
 import dagger.hilt.android.AndroidEntryPoint
 

@@ -1,4 +1,4 @@
-package com.google.samples.apps.sunflower.compose
+package com.google.samples.apps.sunflower.compose.plantlist
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -13,6 +13,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import coil.compose.rememberImagePainter
@@ -50,7 +51,9 @@ fun PlantItemCard(plant: Plant?, onItemClick: (Plant) -> Unit) {
                         .fillMaxWidth()
                         .padding(8.dp),
                     text = it.name,
-                    textAlign = TextAlign.Center
+                    textAlign = TextAlign.Center,
+                    maxLines = 1,
+                    overflow = TextOverflow.Ellipsis
                 )
             }
         }

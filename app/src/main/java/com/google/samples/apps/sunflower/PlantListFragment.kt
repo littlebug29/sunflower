@@ -23,10 +23,16 @@ import android.view.MenuInflater
 import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
+import androidx.compose.material.ExperimentalMaterialApi
+import androidx.compose.ui.platform.ComposeView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.observe
+import androidx.navigation.findNavController
+import com.google.accompanist.insets.ProvideWindowInsets
+import com.google.android.material.composethemeadapter.MdcTheme
 import com.google.samples.apps.sunflower.adapters.PlantAdapter
+import com.google.samples.apps.sunflower.compose.PlantListScreen
 import com.google.samples.apps.sunflower.databinding.FragmentPlantListBinding
 import com.google.samples.apps.sunflower.viewmodels.PlantListViewModel
 import dagger.hilt.android.AndroidEntryPoint
@@ -40,16 +46,27 @@ class PlantListFragment : Fragment() {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View {
-        val binding = FragmentPlantListBinding.inflate(inflater, container, false)
-        context ?: return binding.root
+    ): View = ComposeView(requireContext()).apply {
+        setContent {
+            MdcTheme {
+                ProvideWindowInsets {
+                    PlantListScreen(
+                        plantListViewModel = viewModel,
+                        onItemClickCallback = { plant ->
+                            navigateToPlaintDetail(plant.plantId, this)
+                        }
+                    )
+                }
+            }
+        }
+    }
 
-        val adapter = PlantAdapter()
-        binding.plantList.adapter = adapter
-        subscribeUi(adapter)
-
-        setHasOptionsMenu(true)
-        return binding.root
+    private fun navigateToPlaintDetail(plantId: String, view: View) {
+        val direction =
+            HomeViewPagerFragmentDirections.actionViewPagerFragmentToPlantDetailFragment(
+                plantId
+            )
+        view.findNavController().navigate(direction)
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {

@@ -70,7 +70,7 @@ android {
         excludes += "/META-INF/LGPL2.1"
     }
     composeOptions {
-        kotlinCompilerVersion "1.5.21"
+        kotlinCompilerVersion "1.5.10"
         kotlinCompilerExtensionVersion "1.0.0-rc02"
     }
 }
@@ -105,14 +105,20 @@ dependencies {
     implementation "com.google.dagger:hilt-android:$rootProject.hiltVersion"
 
     // Compose
+    implementation "androidx.activity:activity-compose:$rootProject.activityComposeVersion"
+    implementation "androidx.constraintlayout:constraintlayout-compose:$rootProject.constraintLayoutComposeVersion"
     implementation "androidx.compose.runtime:runtime:$rootProject.composeVersion"
     implementation "androidx.compose.ui:ui:$rootProject.composeVersion"
     implementation "androidx.compose.foundation:foundation:$rootProject.composeVersion"
     implementation "androidx.compose.foundation:foundation-layout:$rootProject.composeVersion"
     implementation "androidx.compose.material:material:$rootProject.composeVersion"
-    implementation "androidx.compose.runtime:runtime-livedata:$rootProject.composeVersion"
+    implementation "androidx.compose.ui:ui-viewbinding:$rootProject.composeVersion"
     implementation "androidx.compose.ui:ui-tooling:$rootProject.composeVersion"
+    implementation "androidx.compose.runtime:runtime-livedata:$rootProject.composeVersion"
+    implementation "androidx.lifecycle:lifecycle-viewmodel-compose:$rootProject.viewModelComposeVersion"
     implementation "com.google.android.material:compose-theme-adapter:$rootProject.composeVersion"
+    implementation "com.google.accompanist:accompanist-insets:$rootProject.accompanistVersion"
+    implementation "io.coil-kt:coil-compose:$rootProject.coilVersion"
 
     // Testing dependencies
     kaptAndroidTest "com.google.dagger:hilt-android-compiler:$rootProject.hiltVersion"
